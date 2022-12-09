@@ -42,6 +42,8 @@ public class Nonogram {
             State newState = state.copy();
             newState.setIndexBoard(mrvRes[0], mrvRes[1], s);
             newState.removeIndexDomain(mrvRes[0], mrvRes[1], s);
+            //newState.printBoard();
+            forward_Checking(newState,mrvRes[0],mrvRes[1]);
             if (!isConsistent(newState)) {
                 continue;
             }
@@ -50,8 +52,46 @@ public class Nonogram {
                 return true;
             }
         }
-
         return false;
+    }
+
+    private void forward_Checking (State state,int x,int y) {
+        ArrayList<Integer> row_constraint = row_constraints.get(x);
+        ArrayList<Integer> col_constraint = col_constraints.get(y);
+        int sumcs_row = 0 , sumcs_col = 0 , sumf_row = 0 , sumf_col = 0 , sumx_row = 0 , sumx_col = 0;
+        for (int i : row_constraint){
+            sumcs_row += i ;
+        }
+        for (int i : col_constraint){
+            sumcs_col += i;
+        }
+        ArrayList<ArrayList<String>> cBoard = state.getBoard();
+        for (int i = 0;i < n ; i++){
+            if (cBoard.get(x).get(i).equals("F")){
+                sumf_row++;
+            }
+            if (cBoard.get(x).get(i).equals("X")){
+                sumx_row++;
+            }
+        }
+        //System.out.println(x + " " + y + " "  + sumcs_row + " " + sumcs_col );
+        if (sumf_row == sumcs_row){
+            for (int i=0;i<n;i++){
+                if (state.getBoard().get(x).get(i).equals("E")) {
+                    state.removeIndexDomain(x, i, "F");
+                    state.setIndexBoard(x, i, "X");
+                }
+            }
+        }
+        if (sumf_col == sumcs_col){
+            for (int i=0;i<n;i++){
+                if (state.getBoard().get(x).get(i).equals("E")) {
+                    state.removeIndexDomain(i, y, "F");
+                    state.setIndexBoard(i, y, "X");
+                }
+            }
+        }
+
     }
 
     private ArrayList<String> LCV (State state, int[] var) {
@@ -63,7 +103,19 @@ public class Nonogram {
         ArrayList<ArrayList<ArrayList<String>>> cDomain = state.getDomain();
 
         int[] result = new int[2];
-
+        int min = 3 , ans_x = 0, ans_y = 0;
+        for (int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if (cDomain.get(i).get(j).size() < min  && cBoard.get(i).get(j).equals("E")){
+                    ans_x = i;
+                    ans_y = j;
+                    min = cDomain.get(i).get(j).size();
+                }
+            }
+        }
+        result[0] = ans_x;
+        result[1] = ans_y;
+        //System.out.println(result[0] + " " + result[1] + " " + min + " " + cBoard.get(0).get(0).equals("E"));
         return result;
     }
 
