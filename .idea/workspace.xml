@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1d277c56-a57c-46b5-93d2-98657a5ca6bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Nonogram-Puzzle-CSP/Nonogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Nonogram-Puzzle-CSP/Nonogram.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Nonogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Nonogram.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +57,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670494297601</updated>
-      <workItem from="1670494300597" duration="12616000" />
+      <workItem from="1670494300597" duration="20170000" />
+      <workItem from="1670693136211" duration="4943000" />
     </task>
     <servers />
   </component>
