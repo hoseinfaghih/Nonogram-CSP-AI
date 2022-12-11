@@ -13,7 +13,7 @@ public class Main {
     private static ArrayList<ArrayList<ArrayList<String>>> domain;
 
     public static void main(String[] args) {
-        File file = new File("G:\\Projects\\Nonogram-Puzzle-CSP\\inputs\\input2.txt");
+        File file = new File("G:\\Projects\\Nonogram-Puzzle-CSP\\inputs\\input5.txt");
         Scanner scanner;
 
         try {
